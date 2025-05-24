@@ -1,0 +1,11 @@
+{
+  "name": "watts-my-time",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saegii/watts-my-time.git"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
