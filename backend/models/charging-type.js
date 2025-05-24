@@ -6,3 +6,5 @@ const ChargingType = Object.freeze({
     STANDARD: 'STANDARD',
     RAPID: 'RAPID',
 });
+
+module.exports = ChargingType;

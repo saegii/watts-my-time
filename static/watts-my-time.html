@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 </head>
 <body>
 
+<form id="calculation-input-form" class="w3-container">
+    <button class="w3-button w3-blue w3-margin-top" type="button" onclick="calculate()">Berechnen</button>
+</form>
+
+<section id="latest-calculation-container" class="w3-container">
+    <h2>Letzte Berechnung:</h2>
+    <pre id="latest-calculation" class="w3-border w3-padding"></pre>
+</section>
+
+<script src="js/api-service.js"></script>
 </body>
 </html>
