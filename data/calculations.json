@@ -1,0 +1,26 @@
+[
+  {
+    "batterySize": 75,
+    "chargeType": "DC_FAST",
+    "targetChargeLevel": 80,
+    "creationDate": "2025-05-24T14:30:00.000Z"
+  },
+  {
+    "batterySize": 60,
+    "chargeType": "AC",
+    "targetChargeLevel": 90,
+    "creationDate": "2025-05-23T10:15:00.000Z"
+  },
+  {
+    "batterySize": 85,
+    "chargeType": "RAPID",
+    "targetChargeLevel": 70,
+    "creationDate": "2025-05-24T16:00:00.000Z"
+  },
+  {
+    "batterySize": 50,
+    "chargeType": "WIRELESS",
+    "targetChargeLevel": 60,
+    "creationDate": "2025-05-22T09:45:00.000Z"
+  }
+]
