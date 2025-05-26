@@ -6,3 +6,9 @@ With the following command all node_modules get installed and the project gets s
 ```
 npm run watts-my-time
 ```
+
+### Delete calculations history
+With the following command all stored calculations get deleted:
+```
+npm run delete-history
+```

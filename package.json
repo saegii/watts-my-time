@@ -2,7 +2,8 @@
   "name": "watts-my-time",
   "version": "1.0.0",
   "scripts": {
-    "run-watts-my-time": "npm i && node ./backend/api.js"
+    "run-watts-my-time": "npm i && node ./backend/api.js",
+    "delete-history": "rm ./data/calculations.json"
   },
   "repository": {
     "type": "git",
