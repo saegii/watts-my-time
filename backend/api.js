@@ -11,5 +11,5 @@ app.get('/v1/calculator/calculations/latest', (req, res) => {
 
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 Server läuft unter http://localhost:${PORT}/watts-my-time.html`);
+    console.log(`Successfully started project - http://localhost:${PORT}/watts-my-time.html`);
 });

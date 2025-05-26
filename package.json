@@ -1,6 +1,9 @@
 {
   "name": "watts-my-time",
   "version": "1.0.0",
+  "scripts": {
+    "run-watts-my-time": "npm i && node ./backend/api.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/saegii/watts-my-time.git"
