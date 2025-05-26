@@ -6,6 +6,7 @@ class Calculation {
         this.batterySize = data.batterySize;
         this.chargeType = ChargingType[data.chargeType] || ChargingType.AC;
         this.targetChargeLevel = data.targetChargeLevel;
+        this.chargingDuration = data.chargingDuration;
     }
 }
 module.exports = Calculation;

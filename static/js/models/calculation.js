@@ -10,7 +10,7 @@ export class Calculation {
         return `Ziel-Ladestand: ${this.targetChargeLevel}%, ` +
             `Batterie: ${this.batterySize} kWh, ` +
             `Ladetyp: ${this.chargeType}, ` +
-            `Ladedauer: ${this.chargingDuration} Minute, ` +
+            `Ladedauer: ${this.formatDuration()}, ` +
             `Berechnungsdatum: ${this.creationDate.toLocaleString("de-CH")}`;
     }
     formatDuration() {

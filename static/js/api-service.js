@@ -9,10 +9,6 @@ function loadLatestCalculation() {
             return response.json();
         })
         .then(latestCalculation => {
-            console.log(latestCalculation);
-            console.log(latestCalculation != undefined);
-            console.log(latestCalculation != {});
-            console.log(latestCalculation != null);
             if (latestCalculation.creationDate !== undefined) {
                 const calculation = new Calculation(latestCalculation);
                 document.getElementById("latest-calculation").textContent = calculation.formatCalculation();
