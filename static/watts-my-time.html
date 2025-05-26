@@ -16,15 +16,15 @@
             <p>Geben Sie Ihre Informationen zu Ihrer Autobatterie sowie Ladestation ein.</p>
             <div class="w3-margin-bottom" style="display: block;">
                 <label for="target-charge-level">Ziel-Ladestand (%)</label>
-                <input type="number" id="target-charge-level" required />
+                <input type="number" id="target-charge-level" class="w3-input" required />
             </div>
             <div class="w3-margin-bottom" style="display: block;">
                 <label for="battery-size">Batteriegrösse (kWh)</label>
-                <input type="number" id="battery-size" required />
+                <input type="number" id="battery-size" class="w3-input" required />
             </div>
             <div class="w3-margin-bottom" style="display: block;">
                 <label for="charge-type">Ladetyp</label>
-                <select id="charge-type" required>
+                <select id="charge-type" class="w3-select" required>
                     <option value="AC">AC</option>
                     <option value="DC_FAST">DC Fast</option>
                     <option value="RAPID">Rapid</option>
@@ -44,7 +44,7 @@
         <hr class="w3-border-light-grey" />
         <section id="latest-calculation-container" class="w3-container w3-padding">
             <h4>Letzte Berechnung</h4>
-            <div id="latest-calculation" class="w3-border w3-padding w3-round-large"></div>
+            <div id="latest-calculation" class="w3-border w3-padding w3-round-large">Noch keine Berechnung durchgeführt.</div>
         </section>
     </div>
     <script type="module" src="js/api-service.js"></script>

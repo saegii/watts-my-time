@@ -1,5 +1,6 @@
 const Calculation = require("../models/calculation");
 const chargingSpeeds = require("../models/charging-speeds");
+const dataService = require('./data-service');
 
 function calculateDuration(calculationInput) {
     const calculation = new Calculation(calculationInput);
@@ -8,6 +9,7 @@ function calculateDuration(calculationInput) {
     const loadingStateDifference = calculation.targetChargeLevel - currentLoadingState;
     const kwhToCharge = calculation.batterySize / 100 * loadingStateDifference;
     calculation.chargingDuration = Math.ceil(kwhToCharge / chargingSpeed * 60);
+    dataService.saveCalculation(calculation);
     return calculation;
 }
 module.exports = {

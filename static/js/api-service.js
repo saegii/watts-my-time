@@ -9,8 +9,14 @@ function loadLatestCalculation() {
             return response.json();
         })
         .then(latestCalculation => {
-            const calculation = new Calculation(latestCalculation);
-            document.getElementById("latest-calculation").textContent = calculation.formatCalculation();
+            console.log(latestCalculation);
+            console.log(latestCalculation != undefined);
+            console.log(latestCalculation != {});
+            console.log(latestCalculation != null);
+            if (latestCalculation.creationDate !== undefined) {
+                const calculation = new Calculation(latestCalculation);
+                document.getElementById("latest-calculation").textContent = calculation.formatCalculation();
+            }
         })
         .catch(error => {
             document.getElementById("latest-calculation").textContent = "Fehler beim Laden: " + error.message;
@@ -39,6 +45,7 @@ function calculate() {
         .then(currentCalculation => {
             const calculation = new Calculation(currentCalculation);
             document.getElementById("calculated-duration").textContent = calculation.formatDuration();
+            loadLatestCalculation();
         })
         .catch(error => {
             document.getElementById("calculated-duration").textContent = "Fehler beim Berechnen: " + error.message;
