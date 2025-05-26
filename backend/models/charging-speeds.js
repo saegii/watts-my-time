@@ -1,11 +1,12 @@
 const ChargingType = require("./charging-type");
 
 const chargingSpeeds = new Map([
-    [ChargingType.AC, 7.4],
-    [ChargingType.DC_FAST, 50],
-    [ChargingType.WIRELESS, 15],
-    [ChargingType.TRICKLE, 2],
-    [ChargingType.STANDARD, 3.6],
-    [ChargingType.RAPID, 22],
+        [ChargingType.TRICKLE, 2.3],
+        [ChargingType.AC, 11],
+        [ChargingType.WIRELESS, 11],
+        [ChargingType.STANDARD, 22],
+        [ChargingType.DC_FAST, 50],
+        [ChargingType.RAPID, 150],
+        [ChargingType.HPC, 250]
 ])
 module.exports = chargingSpeeds;

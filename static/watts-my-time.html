@@ -25,11 +25,13 @@
             <div class="w3-margin-bottom" style="display: block;">
                 <label for="charge-type">Ladetyp</label>
                 <select id="charge-type" class="w3-select" required>
-                    <option value="AC">AC</option>
-                    <option value="DC_FAST">DC Fast</option>
-                    <option value="RAPID">Rapid</option>
-                    <option value="TRICKLE">Trickle</option>
-                    <option value="WIRELESS">Wireless</option>
+                    <option value="TRICKLE">Haushalt Steckdose</option>
+                    <option value="AC">Standard-Wallbox</option>
+                    <option value="STANDARD">Starke Wallbox</option>
+                    <option value="WIRELESS">Induktives Laden</option>
+                    <option value="DC_FAST">Schnell-Laden DC</option>
+                    <option value="RAPID">Schnell-Laden neue Generation</option>
+                    <option value="HPC">High-Power Charging</option>
                 </select>
             </div>
             <div class="w3-right-align w3-margin-bottom" style="display: block;">
@@ -38,7 +40,7 @@
         </form>
         <hr class="w3-border-light-grey" />
         <section id="calculated-duration-container" class="w3-container w3-padding w3-margin-bottom">
-            <div class="w3-row w3-padding-top" style="align-items: center; display: flex;">
+            <div class="w3-row w3-padding-top" style="display: flex;">
                 <div class="w3-col s7">
                     <h4>Berechnete Ladedauer</h4>
                     <p id="calculated-duration">Noch keine Berechnung durchgeführt.</p>
@@ -50,10 +52,10 @@
         </section>
         <hr class="w3-border-light-grey" />
         <section id="latest-calculation-container" class="w3-container w3-padding">
-            <h4>Berechnungs History</h4>
+            <h4>Letzte Berechnung</h4>
             <div id="latest-calculation" class="w3-border w3-padding w3-round-large"></div>
             <div class="w3-right-align w3-margin-bottom" style="display: block;">
-                <button id="clear-history" class="w3-button w3-blue w3-margin-top w3-round-large" type="button">Liste leeren</button>
+                <button id="clear-history" class="w3-button w3-blue w3-margin-top w3-round-large" type="button">Einträge leeren</button>
             </div>
         </section>
     </div>

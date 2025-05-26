@@ -1,9 +1,10 @@
 const ChargingType = Object.freeze({
-    AC: 'AC',
-    DC_FAST: 'DC_FAST',
-    WIRELESS: 'WIRELESS',
     TRICKLE: 'TRICKLE',
+    AC: 'AC',
     STANDARD: 'STANDARD',
+    WIRELESS: 'WIRELESS',
+    DC_FAST: 'DC_FAST',
     RAPID: 'RAPID',
+    HPC: 'HPC',
 });
 module.exports = ChargingType;
