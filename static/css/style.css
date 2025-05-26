@@ -1,13 +1,15 @@
-#battery-canvas {
-    border: 1px solid #ccc;
-    border-radius: 12px;
+@media screen and (max-width: 600px) {
+    #calculated-duration-container .w3-row {
+        flex-direction: column;
+    }
+
+    #calculated-duration-container canvas {
+        margin-top: 1rem;
+        align-self: center;
+    }
 }
 
-.main-content-width {
-    padding: 12px 15rem;
-}
-
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
     .main-content-width {
         padding: 12px 5rem;
     }

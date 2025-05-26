@@ -38,9 +38,15 @@
         </form>
         <hr class="w3-border-light-grey" />
         <section id="calculated-duration-container" class="w3-container w3-padding w3-margin-bottom">
-            <h4>Berechnete Ladedauer</h4>
-            <p id="calculated-duration">Noch keine Berechnung durchgeführt.</p>
-            <canvas id="battery-canvas" width="300" height="150"></canvas>
+            <div class="w3-row w3-padding-top" style="align-items: center; display: flex;">
+                <div class="w3-col s7">
+                    <h4>Berechnete Ladedauer</h4>
+                    <p id="calculated-duration">Noch keine Berechnung durchgeführt.</p>
+                </div>
+                <div class="w3-col s5" style="text-align: right;">
+                    <canvas id="battery-canvas" width="300" height="150"></canvas>
+                </div>
+            </div>
         </section>
         <hr class="w3-border-light-grey" />
         <section id="latest-calculation-container" class="w3-container w3-padding">
