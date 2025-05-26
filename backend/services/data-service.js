@@ -4,12 +4,9 @@ const Calculation = require('../models/calculation');
 
 function loadLatestCalculations() {
     const filePath = path.join(__dirname, '../../data/calculations.json');
-    const jsonData = fs.readFileSync(filePath, 'utf-8');
-
-    const calculationsData = JSON.parse(jsonData);
+    const calculationsData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     const calculations = calculationsData.map(data => new Calculation(data));
-    calculations.sort((a, b) => new Date(a.date) - new Date(b.date));
-    return calculations[0];
+    return calculations.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))[0];
 }
 
 module.exports = {

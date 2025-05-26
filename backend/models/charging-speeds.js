@@ -1,3 +1,5 @@
+import ChargingType from "./charging-type";
+
 const chargingSpeeds = new Map([
     [ChargingType.AC, 7.4],
     [ChargingType.DC_FAST, 50],

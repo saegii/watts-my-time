@@ -1,3 +1,5 @@
+import {ModelFormatter} from "./services/model-formatter.js";
+
 function loadLatestCalculation() {
     fetch("/v1/calculator/calculations/latest")
         .then(response => {
@@ -7,16 +9,12 @@ function loadLatestCalculation() {
             return response.json();
         })
         .then(latestCalculation => {
-            displayLatestCalculation(latestCalculation);
+            const formatter = new ModelFormatter();
+            document.getElementById("latest-calculation").textContent = formatter.formatCalculation(latestCalculation);
         })
         .catch(error => {
-            document.getElementById("outputArea").textContent = "Error while loading: " + error.message;
+            document.getElementById("latest-calculation").textContent = "Error while loading: " + error.message;
         });
-}
-
-function displayLatestCalculation(data) {
-    document.getElementById("latest-calculation").textContent =
-        Object.entries(data).join(",");
 }
 
 window.addEventListener("DOMContentLoaded", () => {
