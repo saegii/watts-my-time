@@ -1,4 +1,4 @@
-import ChargingType from "./charging-type";
+const ChargingType = require("./charging-type");
 
 const chargingSpeeds = new Map([
     [ChargingType.AC, 7.4],
@@ -8,3 +8,4 @@ const chargingSpeeds = new Map([
     [ChargingType.STANDARD, 3.6],
     [ChargingType.RAPID, 22],
 ])
+module.exports = chargingSpeeds;

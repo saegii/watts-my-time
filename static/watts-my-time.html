@@ -7,16 +7,46 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 </head>
 <body>
-
-<form id="calculation-input-form" class="w3-container">
-    <button class="w3-button w3-blue w3-margin-top" type="button" onclick="calculate()">Berechnen</button>
-</form>
-
-<section id="latest-calculation-container" class="w3-container">
-    <h4>Letzte Berechnung:</h4>
-    <pre id="latest-calculation" class="w3-border w3-padding w3-round-large"></pre>
-</section>
-
-<script type="module" src="js/api-service.js"></script>
+    <header class="w3-padding w3-border-bottom w3-margin-bottom w3-light-grey">
+        <h2 class="w3-xlarge">🔋 Watts-My-Time</h2>
+    </header>
+    <div class="main-content-width w3-margin">
+        <form id="calculation-input-form" class="w3-container w3-padding w3-margin-bottom">
+            <h4>Angabe zur Autobatterie</h4>
+            <p>Geben Sie Ihre Informationen zu Ihrer Autobatterie sowie Ladestation ein.</p>
+            <div class="w3-margin-bottom" style="display: block;">
+                <label for="target-charge-level">Ziel-Ladestand (%)</label>
+                <input type="number" id="target-charge-level" required />
+            </div>
+            <div class="w3-margin-bottom" style="display: block;">
+                <label for="battery-size">Batteriegrösse (kWh)</label>
+                <input type="number" id="battery-size" required />
+            </div>
+            <div class="w3-margin-bottom" style="display: block;">
+                <label for="charge-type">Ladetyp</label>
+                <select id="charge-type" required>
+                    <option value="AC">AC</option>
+                    <option value="DC_FAST">DC Fast</option>
+                    <option value="RAPID">Rapid</option>
+                    <option value="TRICKLE">Trickle</option>
+                    <option value="WIRELESS">Wireless</option>
+                </select>
+            </div>
+            <div class="w3-right-align w3-margin-bottom" style="display: block;">
+                <button id="submit-calculation" class="w3-button w3-blue w3-margin-top w3-round-large" type="button">Berechnen</button>
+            </div>
+        </form>
+        <hr class="w3-border-light-grey" />
+        <section id="calculated-duration-container" class="w3-container w3-padding w3-margin-bottom">
+            <h4>Berechnete Ladedauer</h4>
+            <p id="calculated-duration">Noch keine Berechnung durchgeführt.</p>
+        </section>
+        <hr class="w3-border-light-grey" />
+        <section id="latest-calculation-container" class="w3-container w3-padding">
+            <h4>Letzte Berechnung</h4>
+            <div id="latest-calculation" class="w3-border w3-padding w3-round-large"></div>
+        </section>
+    </div>
+    <script type="module" src="js/api-service.js"></script>
 </body>
 </html>

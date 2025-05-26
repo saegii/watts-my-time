@@ -4,9 +4,14 @@ const app = express();
 app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '../static')));
 const dataService = require('./services/data-service');
+const durationCalculator = require("./services/duration-calculator");
 
 app.get('/v1/calculator/calculations/latest', (req, res) => {
     res.status(200).send(dataService.loadLatestCalculations());
+});
+
+app.post('/v1/calculator/calculations/calculate', (req, res) => {
+    res.status(200).send(durationCalculator.calculateDuration(req.body));
 });
 
 const PORT = 3000;

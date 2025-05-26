@@ -8,7 +8,6 @@ function loadLatestCalculations() {
     const calculations = calculationsData.map(data => new Calculation(data));
     return calculations.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate))[0];
 }
-
 module.exports = {
     loadLatestCalculations
 };
