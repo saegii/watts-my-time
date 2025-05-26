@@ -26,7 +26,14 @@ function saveCalculation(calculation) {
     calculations.push(new Calculation(calculation));
     fs.writeFileSync(filePath, JSON.stringify(calculations, null, 2), 'utf-8');
 }
+function clearHistory() {
+    const filePath = path.join(__dirname, '../../data/calculations.json');
+    if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+    }
+}
 module.exports = {
     loadLatestCalculations,
     saveCalculation,
+    clearHistory,
 };

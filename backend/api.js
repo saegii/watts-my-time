@@ -14,6 +14,11 @@ app.post('/v1/calculator/calculations/calculate', (req, res) => {
     res.status(200).send(durationCalculator.calculateDuration(req.body));
 });
 
+app.delete('/v1/calculator/calculations', (req, res) => {
+    dataService.clearHistory();
+    res.status(200).send();
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Successfully started project - http://localhost:${PORT}/watts-my-time.html`);

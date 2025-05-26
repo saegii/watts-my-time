@@ -13,6 +13,8 @@ function loadLatestCalculation() {
             if (latestCalculation.creationDate !== undefined) {
                 const calculation = new Calculation(latestCalculation);
                 document.getElementById("latest-calculation").textContent = calculation.formatCalculation();
+            } else {
+                document.getElementById("latest-calculation").textContent = "Noch keine Berechnung durchgeführt.";
             }
         })
         .catch(error => {
@@ -41,16 +43,30 @@ function calculate() {
         .then(currentCalculation => {
             const calculation = new Calculation(currentCalculation);
             document.getElementById("calculated-duration").textContent = calculation.formatDuration();
-            loadLatestCalculation();
             const canvasDrawer = new CanvasDrawer();
             canvasDrawer.drawBatteryAnimation(0, calculation.targetChargeLevel);
-            console.log(calculation.targetChargeLevel);
+            loadLatestCalculation();
         })
         .catch(error => {
             document.getElementById("calculated-duration").textContent = "Fehler beim Berechnen: " + error.message;
         });
 }
+function clearHistory() {
+    fetch("/v1/calculator/calculations", {
+        method: "DELETE"
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Löschen fehlgeschlagen");
+            }
+            loadLatestCalculation();
+        })
+        .catch(error => {
+            alert("Fehler beim Löschen: " + error.message);
+        });
+}
 window.addEventListener("DOMContentLoaded", () => {
     loadLatestCalculation();
     document.getElementById("submit-calculation").addEventListener("click", calculate);
+    document.getElementById("clear-history").addEventListener("click", clearHistory);
 });
