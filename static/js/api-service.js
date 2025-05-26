@@ -1,4 +1,5 @@
 import {Calculation} from "./models/calculation.js";
+import {CanvasDrawer} from "./services/battery-canvas.js";
 
 function loadLatestCalculation() {
     fetch("/v1/calculator/calculations/latest")
@@ -18,7 +19,6 @@ function loadLatestCalculation() {
             document.getElementById("latest-calculation").textContent = "Fehler beim Laden: " + error.message;
         });
 }
-
 function calculate() {
     const payload = new Calculation({
         batterySize: Number(document.getElementById("battery-size").value),
@@ -42,12 +42,14 @@ function calculate() {
             const calculation = new Calculation(currentCalculation);
             document.getElementById("calculated-duration").textContent = calculation.formatDuration();
             loadLatestCalculation();
+            const canvasDrawer = new CanvasDrawer();
+            canvasDrawer.drawBatteryAnimation(0, calculation.targetChargeLevel);
+            console.log(calculation.targetChargeLevel);
         })
         .catch(error => {
             document.getElementById("calculated-duration").textContent = "Fehler beim Berechnen: " + error.message;
         });
 }
-
 window.addEventListener("DOMContentLoaded", () => {
     loadLatestCalculation();
     document.getElementById("submit-calculation").addEventListener("click", calculate);

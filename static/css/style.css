@@ -1,3 +1,8 @@
+#battery-canvas {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+}
+
 .main-content-width {
     padding: 12px 15rem;
 }
