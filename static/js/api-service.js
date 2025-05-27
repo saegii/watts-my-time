@@ -1,5 +1,6 @@
 import {Calculation} from "./models/calculation.js";
 import {CanvasDrawer} from "./services/battery-canvas.js";
+import {updateButtonState} from "./services/validation.js";
 
 function loadLatestCalculation() {
     fetch("/v1/calculator/calculations/latest")
@@ -65,10 +66,29 @@ function clearHistory() {
             alert("Fehler beim Löschen: " + error.message);
         });
 }
+function loadCookie() {
+    const cookieValue = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('latestCalculation='));
+
+    if (cookieValue) {
+        try {
+            let decoded = decodeURIComponent(cookieValue.split('=')[1]);
+            const saved = JSON.parse(decoded);
+            if (saved.chargeType) document.getElementById("charge-type").value = saved.chargeType;
+            if (saved.batterySize) document.getElementById("battery-size").value = saved.batterySize;
+            if (saved.targetChargeLevel) document.getElementById("target-charge-level").value = saved.targetChargeLevel;
+            updateButtonState();
+        } catch (e) {
+            console.error("Cookie konnte nicht gelesen werden:", e);
+        }
+    }
+}
 window.addEventListener("DOMContentLoaded", () => {
     loadLatestCalculation();
     document.getElementById("submit-calculation").addEventListener("click", calculate);
     document.getElementById("clear-history").addEventListener("click", clearHistory);
     const canvasDrawer = new CanvasDrawer();
     canvasDrawer.drawBatteryAnimation(0, 0);
+    loadCookie();
 });

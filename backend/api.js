@@ -25,6 +25,15 @@ app.post('/v1/calculator/calculations/calculate', (req, res) => {
         if (Object.keys(errors).length > 0) {
             res.status(400).send({errors});
         } else {
+            const cookieValue = {
+                targetChargeLevel: req.body.targetChargeLevel,
+                batterySize: req.body.batterySize,
+                chargeType: req.body.chargeType
+            }
+            res.cookie('latestCalculation', JSON.stringify(cookieValue), {
+                maxAge: 30 * 24 * 60 * 60 * 1000,
+                httpOnly: false,
+            });
             res.status(200).send(durationCalculator.calculateDuration(req.body));
         }
     } catch(err) {
