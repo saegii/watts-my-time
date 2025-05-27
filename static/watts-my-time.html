@@ -35,7 +35,7 @@
                 </select>
             </div>
             <div class="w3-right-align w3-margin-bottom" style="display: block;">
-                <button id="submit-calculation" class="w3-button w3-blue w3-margin-top w3-round-large" type="button">Berechnen</button>
+                <button id="submit-calculation" class="w3-button w3-blue w3-margin-top w3-round-large" type="button" disabled>Berechnen</button>
             </div>
         </form>
         <hr class="w3-border-light-grey" />
@@ -53,12 +53,13 @@
         <hr class="w3-border-light-grey" />
         <section id="latest-calculation-container" class="w3-container w3-padding">
             <h4>Letzte Berechnung</h4>
-            <div id="latest-calculation" class="w3-border w3-padding w3-round-large"></div>
+            <div id="latest-calculation" class="w3-border w3-padding w3-round"></div>
             <div class="w3-right-align w3-margin-bottom" style="display: block;">
                 <button id="clear-history" class="w3-button w3-blue w3-margin-top w3-round-large" type="button">Einträge leeren</button>
             </div>
         </section>
     </div>
+    <script type="module" src="js/services/validation.js"></script>
     <script type="module" src="js/api-service.js"></script>
 </body>
 </html>
