@@ -69,4 +69,6 @@ window.addEventListener("DOMContentLoaded", () => {
     loadLatestCalculation();
     document.getElementById("submit-calculation").addEventListener("click", calculate);
     document.getElementById("clear-history").addEventListener("click", clearHistory);
+    const canvasDrawer = new CanvasDrawer();
+    canvasDrawer.drawBatteryAnimation(0, 0);
 });
