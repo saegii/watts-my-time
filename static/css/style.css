@@ -1,3 +1,7 @@
+.scroll-container {
+    scroll-margin-top: 140px;
+}
+
 @media screen and (max-width: 600px) {
     #calculated-duration-container .w3-row {
         flex-direction: column;

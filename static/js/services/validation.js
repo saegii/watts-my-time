@@ -1,4 +1,4 @@
-import {ChargingType} from "../models/charging-type";
+import {ChargingType} from "../models/charging-type.js";
 
 const calculateButton = document.getElementById("submit-calculation");
 const inputs = {

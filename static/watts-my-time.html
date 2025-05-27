@@ -7,13 +7,23 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 </head>
 <body>
-    <header class="w3-padding w3-border-bottom w3-margin-bottom w3-light-grey">
-        <h2 class="w3-xlarge">🔋 Watts-My-Time</h2>
+    <header class="w3-top w3-light-grey w3-card">
+        <nav class="w3-bar w3-light-grey w3-border-top w3-large">
+            <h2 class="w3-padding w3-xlarge">🔋 Watts-My-Time</h2>
+            <a href="#info-section" class="w3-bar-item w3-button w3-mobile">Über Watts-My-Time</a>
+            <a href="#calculation-input-form" class="w3-bar-item w3-button w3-mobile">Berechnung Ladedauer</a>
+            <a href="#calculated-duration-container" class="w3-bar-item w3-button w3-mobile">Berechnete Ladedauer</a>
+        </nav>
     </header>
+    <div style="height: 120px;"></div>
     <div class="main-content-width w3-margin">
-        <form id="calculation-input-form" class="w3-container w3-padding w3-margin-bottom">
-            <h4>Angabe zur Autobatterie</h4>
-            <p>Geben Sie Ihre Informationen zu Ihrer Autobatterie sowie Ladestation ein.</p>
+        <section id="info-section" class="w3-container w3-padding w3-margin-bottom scroll-container">
+            <h4>Über Watts-My-Time</h4>
+            <p>Diese Webapplikation berechnet die ungefähre Ladedauer Ihrer Autobatterie basierend auf der Ladeart, Batteriegröße und dem Ziel-Ladestand.</p>
+            <img src="img/charging-img.jpg" alt="Bild Elekrtoauto Ladestation" class="w3-image" style="max-width: 300px;"/>
+        </section>
+        <form id="calculation-input-form" class="w3-container w3-padding w3-margin-bottom scroll-container">
+            <h4>Berechnung Ladedauer</h4>
             <div class="w3-margin-bottom" style="display: block;">
                 <label for="target-charge-level">Ziel-Ladestand (%)</label>
                 <input type="number" id="target-charge-level" class="w3-input" required />
@@ -39,7 +49,7 @@
             </div>
         </form>
         <hr class="w3-border-light-grey" />
-        <section id="calculated-duration-container" class="w3-container w3-padding w3-margin-bottom">
+        <section id="calculated-duration-container" class="w3-container w3-padding w3-margin-bottom scroll-container">
             <div class="w3-row w3-padding-top" style="display: flex;">
                 <div class="w3-col s7">
                     <h4>Berechnete Ladedauer</h4>
