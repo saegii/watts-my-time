@@ -1,3 +1,5 @@
+import {ChargingType} from "../models/charging-type";
+
 const calculateButton = document.getElementById("submit-calculation");
 const inputs = {
     targetCharge: document.getElementById("target-charge-level"),
@@ -12,7 +14,7 @@ const errorMessages = {
 const validators = {
     targetCharge: value => value >= 1 && value <= 100,
     batterySize: value => value >= 1 && value <= 200,
-    chargeType: value => value !== "",
+    chargeType: value => Object.values(ChargingType).includes(value),
 };
 function showError(input, message) {
     removeError(input);
