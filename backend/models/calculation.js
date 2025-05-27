@@ -4,7 +4,7 @@ class Calculation {
     constructor(data) {
         this.creationDate = data.creationDate ? data.creationDate : new Date();
         this.batterySize = data.batterySize;
-        this.chargeType = ChargingType[data.chargeType] || ChargingType.AC;
+        this.chargeType = ChargingType[data.chargeType];
         this.targetChargeLevel = data.targetChargeLevel;
         this.chargingDuration = data.chargingDuration;
     }
