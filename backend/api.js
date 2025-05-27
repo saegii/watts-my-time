@@ -7,10 +7,9 @@ const dataService = require('./services/data-service');
 const durationCalculator = require("./services/duration-calculator");
 const dataValidator = require("./services/data-validator");
 
-app.get('/v1/calculator/calculations/latest', (req, res) => {
+app.get('/v1/calculator/calculations', (req, res) => {
     try {
-        const latest = dataService.loadLatestCalculations();
-        res.status(200).json({ latestCalculation: latest });
+        res.status(200).json(dataService.loadAllCalculations());
     } catch(err) {
         return res.status(500).json({ error: "Interner Serverfehler" });
     }

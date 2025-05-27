@@ -2,24 +2,36 @@ import {Calculation} from "./models/calculation.js";
 import {CanvasDrawer} from "./services/battery-canvas.js";
 import {updateButtonState} from "./services/validation.js";
 
-function loadLatestCalculation() {
-    fetch("/v1/calculator/calculations/latest")
+function loadCalculationHistory() {
+    fetch("/v1/calculator/calculations")
         .then(response => {
             if (!response.ok) {
                 throw new Error("Keine Daten vorhanden");
             }
             return response.json();
         })
-        .then(latestCalculation => {
-            if (latestCalculation.creationDate !== undefined) {
-                const calculation = new Calculation(latestCalculation);
-                document.getElementById("latest-calculation").textContent = calculation.formatCalculation();
-            } else {
-                document.getElementById("latest-calculation").textContent = "Noch keine Berechnung durchgeführt.";
+        .then(calculations => {
+            const container = document.getElementById("calculation-history-container");
+            container.innerHTML = "";
+            if (!Array.isArray(calculations) || calculations.length === 0) {
+                container.textContent = "Noch keine Berechnungen vorhanden...";
+                return;
             }
+            calculations.forEach((data, index) => {
+                const calculation = new Calculation(data);
+                const calculationDiv = document.createElement("div");
+                calculationDiv.className = "w3-padding w3-margin-bottom";
+                calculationDiv.textContent = calculation.formatCalculation();
+                container.appendChild(calculationDiv);
+                if (index < calculations.length - 1) {
+                    const divider = document.createElement("hr");
+                    divider.className = "w3-border-light-grey";
+                    container.appendChild(divider);
+                }
+            });
         })
         .catch(error => {
-            document.getElementById("latest-calculation").textContent = "Fehler beim Laden: " + error.message;
+            document.getElementById("calculation-history-container").textContent = "Fehler beim Laden: " + error.message;
         });
 }
 function calculate() {
@@ -46,7 +58,7 @@ function calculate() {
             document.getElementById("calculated-duration").textContent = calculation.formatDuration();
             const canvasDrawer = new CanvasDrawer();
             canvasDrawer.drawBatteryAnimation(0, calculation.targetChargeLevel);
-            loadLatestCalculation();
+            loadCalculationHistory();
         })
         .catch(error => {
             document.getElementById("calculated-duration").textContent = "Fehler beim Berechnen: " + error.message;
@@ -60,7 +72,7 @@ function clearHistory() {
             if (!response.ok) {
                 throw new Error("Löschen fehlgeschlagen");
             }
-            loadLatestCalculation();
+            loadCalculationHistory();
         })
         .catch(error => {
             alert("Fehler beim Löschen: " + error.message);
@@ -85,10 +97,10 @@ function loadCookie() {
     }
 }
 window.addEventListener("DOMContentLoaded", () => {
-    loadLatestCalculation();
+    loadCalculationHistory();
+    loadCookie();
     document.getElementById("submit-calculation").addEventListener("click", calculate);
     document.getElementById("clear-history").addEventListener("click", clearHistory);
     const canvasDrawer = new CanvasDrawer();
     canvasDrawer.drawBatteryAnimation(0, 0);
-    loadCookie();
 });

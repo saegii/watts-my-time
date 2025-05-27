@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const Calculation = require('../models/calculation');
 
-function loadLatestCalculations() {
+function loadAllCalculations() {
     const filePath = path.join(__dirname, '../../data/calculations.json');
     if (!fs.existsSync(filePath)) {
         return {};
@@ -10,7 +10,7 @@ function loadLatestCalculations() {
     const calculationsData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     const calculations = calculationsData.map(data => new Calculation(data));
     calculations.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
-    return calculations.length > 1 ? calculations[1] : calculations[0];
+    return calculations;
 }
 function saveCalculation(calculation) {
     const filePath = path.join(__dirname, '../../data/calculations.json');
@@ -33,7 +33,7 @@ function clearHistory() {
     }
 }
 module.exports = {
-    loadLatestCalculations,
+    loadAllCalculations,
     saveCalculation,
     clearHistory,
 };
