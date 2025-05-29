@@ -38,7 +38,8 @@ function calculate() {
     const payload = new Calculation({
         batterySize: Number(document.getElementById("battery-size").value),
         chargeType: document.getElementById("charge-type").value,
-        targetChargeLevel: Number(document.getElementById("target-charge-level").value)
+        targetChargeLevel: Number(document.getElementById("target-charge-level").value),
+        currentChargeLevel: Number(document.getElementById("current-charge-level").value)
     });
     fetch("/v1/calculator/calculations/calculate", {
         method: "POST",
@@ -57,7 +58,7 @@ function calculate() {
             const calculation = new Calculation(currentCalculation);
             document.getElementById("calculated-duration").textContent = calculation.formatDuration();
             const canvasDrawer = new CanvasDrawer();
-            canvasDrawer.drawBatteryAnimation(0, calculation.targetChargeLevel);
+            canvasDrawer.drawBatteryAnimation(calculation.currentChargeLevel, calculation.targetChargeLevel);
             loadCalculationHistory();
         })
         .catch(error => {

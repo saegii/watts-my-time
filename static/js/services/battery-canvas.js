@@ -34,7 +34,7 @@ export class CanvasDrawer {
             this.fillText(currentLevel, targetLevel);
             if (animatedLevel >= targetLevel) {
                 setTimeout(() => {
-                    animatedLevel = 0;
+                    animatedLevel = currentLevel;
                 }, 700);
             } else {
                 animatedLevel += 0.2;

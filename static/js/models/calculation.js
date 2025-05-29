@@ -4,10 +4,12 @@ export class Calculation {
         this.batterySize = data.batterySize;
         this.chargeType = data.chargeType;
         this.targetChargeLevel = data.targetChargeLevel;
+        this.currentChargeLevel = data.currentChargeLevel;
         this.chargingDuration = data.chargingDuration ? data.chargingDuration : 1;
     }
     formatCalculation() {
-        return `Ziel-Ladestand: ${this.targetChargeLevel}%, ` +
+        return `Aktueller Ladestand: ${this.currentChargeLevel}%, ` +
+            `Ziel-Ladestand: ${this.targetChargeLevel}%, ` +
             `Batterie: ${this.batterySize} kWh, ` +
             `Ladetyp: ${this.chargeType}, ` +
             `Ladedauer: ${this.formatDuration()}, ` +
