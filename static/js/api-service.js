@@ -87,7 +87,9 @@ function loadCookie() {
         try {
             let decoded = decodeURIComponent(cookieValue.split('=')[1]);
             const saved = JSON.parse(decoded);
-            if (saved.chargeType) document.getElementById("charge-type").value = saved.chargeType;
+            const select = document.getElementById("charge-type");
+            if (saved.chargeType) select.value = saved.chargeType;
+            select.dispatchEvent(new Event('change'));
             if (saved.batterySize) document.getElementById("battery-size").value = saved.batterySize;
             if (saved.targetChargeLevel) document.getElementById("target-charge-level").value = saved.targetChargeLevel;
             updateButtonState();

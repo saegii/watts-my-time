@@ -2,6 +2,12 @@
     scroll-margin-top: 140px;
 }
 
+.standard-image {
+    display:none;
+    width: 300px;
+    margin-top: 10px;
+}
+
 @media screen and (max-width: 600px) {
     #calculated-duration-container .w3-row {
         flex-direction: column;
